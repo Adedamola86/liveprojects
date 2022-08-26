@@ -1,0 +1,38 @@
+#This is my first liveproject course
+FROM python:3.7-slim
+RUN mkdir src
+WORKDIR /src
+RUN pip install jupyter
+CMD ["jupyter", "notebook", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
+
+#Build docker file to image command
+/liveProject/jupyter$ sudo docker build -t "newliveproject:Dockerfile" .
+
+Sending build context to Docker daemon  2.048kB
+Step 1/5 : FROM python:3.7-slim
+ ---> 998413ac
+Step 2/5 : RUN mkdir src
+ ---> Using cache
+ ---> da651a68
+Step 3/5 : WORKDIR /src
+ ---> Using cache
+ ---> f49658797
+Step 4/5 : RUN pip3 install jupyter
+ ---> Running in 2525f
+Collecting jupyter
+  Downloading jupyter-1.0.0-py2.py3-none-any.whl (2.7 kB)
+
+
+#Run the built image to working container
+/liveProject/jupyter$ sudo docker run --network host newliveproject:Dockerfile
+[I 09:42:11.326 NotebookApp] Writing notebook server cookie secret to /root/.local/share/jupyter/runtime/notebook_cookie_secret
+[I 09:42:11.559 NotebookApp] Serving notebooks from local directory: /src
+[I 09:42:11.559 NotebookApp] Jupyter Notebook 6.4.12 is running at:
+[I 09:42:11.559 NotebookApp] http://xxxxxxx?token=837707f432435ed7<smile>
+[I 09:42:11.559 NotebookApp]  or http://127.0.0.1:8888/?token=837707f432435ed7<smile>
+[I 09:42:11.559 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 09:42:11.562 NotebookApp] 
+    
+    To access the notebook, open this file in a browser:
+
+
